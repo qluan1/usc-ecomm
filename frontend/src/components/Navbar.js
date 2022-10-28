@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {Search, ShoppingCartOutlined } from '@material-ui/icons'
 import {Badge} from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Container = styled.div`
     height: 80px;
@@ -63,7 +63,11 @@ const MenuItem = styled.div`
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
 
+    const RouteChange = () => {
+        navigate('/signUp');
+    }
   return (
     <Container>
         <Wrapper>
@@ -78,12 +82,12 @@ const Navbar = () => {
                 <Logo>Amazon</Logo>
             </Center>
             <Right>
-                <Link to = '/signUp'>
-                    <MenuItem> REGISTER</MenuItem>
-                </Link>
+                
+                <MenuItem onClick={RouteChange}> REGISTER</MenuItem>
+                
                 <MenuItem>SIGN IN</MenuItem>
                 <MenuItem>
-                    <Badge badgeContent = {0} color = "primary">
+                    <Badge badgeContent = {0} color = "primary" overlap="rectangular">
                         <ShoppingCartOutlined />
                     </Badge>
                 </MenuItem>

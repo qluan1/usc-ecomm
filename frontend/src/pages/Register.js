@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     width: 100vw;
@@ -54,6 +55,13 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+
+    let navigate = useNavigate();
+  
+  const routeChange = () =>{ 
+    // let path = '/'; 
+    navigate("/UpdateHome");
+  }
   return (
     <Container>
         <Wrapper>
@@ -66,7 +74,7 @@ const Register = () => {
                 <Input placeholder = "password"/>
                 <Input placeholder = "confirm password"/>
                 <Agreement>By creating an account, you agree to Amazon's Conditions of Use and Privacy Notice.</Agreement>
-                <Button>Sign Up</Button>
+                <Button onClick={routeChange}>Sign Up</Button>
             </Form>
         </Wrapper>
     </Container>

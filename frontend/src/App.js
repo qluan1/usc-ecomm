@@ -2,6 +2,7 @@
 import Register from './pages/Register';
 import { Home  }from './pages/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UpdateHome from './pages/UpdateHome';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element = {<Home />} />
           <Route path='/signUp' element = {<Register />} />
+          <Route path='/UpdateHome' element = {<UpdateHome />} />
         </Routes>
       </BrowserRouter>
     </div>
