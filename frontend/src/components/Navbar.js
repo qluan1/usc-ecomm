@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Search, ShoppingCartOutlined } from '@material-ui/icons'
-import {Badge} from '@material-ui/core'
+import {Badge} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const Container = styled.div`
     height: 80px;
@@ -45,6 +46,8 @@ const Center = styled.div`
     flex: 1;
     text-align: center;
 `;
+
+
 const Right = styled.div`
     flex: 1;
     display: flex;
@@ -58,7 +61,9 @@ const MenuItem = styled.div`
     margin-left: 25px;
 `;
 
+
 const Navbar = () => {
+
   return (
     <Container>
         <Wrapper>
@@ -73,10 +78,12 @@ const Navbar = () => {
                 <Logo>Amazon</Logo>
             </Center>
             <Right>
-                <MenuItem>REGISTER</MenuItem>
+                <Link to = '/signUp'>
+                    <MenuItem> REGISTER</MenuItem>
+                </Link>
                 <MenuItem>SIGN IN</MenuItem>
                 <MenuItem>
-                    <Badge badgeContent = {4} color = "primary">
+                    <Badge badgeContent = {0} color = "primary">
                         <ShoppingCartOutlined />
                     </Badge>
                 </MenuItem>
