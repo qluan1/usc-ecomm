@@ -1,11 +1,12 @@
 import './App.css';
-import Uploadimg from './components/uploadImg';
-
+import Login from './pages/logIn';
 function App() {
+  
   return (
-    <div className="App">
-      <Uploadimg/>
-    </div>
+          <div className="App">
+            <Login />
+          </div>
+
   );
 }
 
