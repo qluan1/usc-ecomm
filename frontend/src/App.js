@@ -5,10 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UpdateHome from './pages/UpdateHome';
 
 import Login from './pages/logIn';
-import {
-  BrowserRouter as Router,
-  Routes, Route
-} from "react-router-dom";
 import ForgetPassword from "../src/pages/forgetpassword";
 
 function App() {
