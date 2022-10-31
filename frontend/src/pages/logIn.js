@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes } from 'styled-components';
-
-
+import { Link } from 'react-router-dom';
 const jump = keyframes`
       from{
         transform: translateY(0)
@@ -144,6 +143,8 @@ export default function Login() {
             <option value="seller">Seller</option>
           </Select>
           <Button>Enter</Button>
+          <br/>
+          <Link to={"./forgetpassword"}>Forget password?</Link>
         </Form>
       </Wrapper>
     </>
