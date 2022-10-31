@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styled, { keyframes, createGlobalStyle } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-    
-    const jump = keyframes`
+
+const jump = keyframes`
       from{
         transform: translateY(0)
       }
@@ -10,16 +10,16 @@ import styled, { keyframes, createGlobalStyle } from 'styled-components';
         transform: translateY(-3px)
       }
     `;
-    
-    const Wrapper = styled.section`
+
+const Wrapper = styled.section`
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
       width: 100%;
     `;
-    
-    const Form = styled.form`
+
+const Form = styled.form`
       margin: 0 auto;
       width: 100%;
       max-width: 400px;
@@ -30,8 +30,8 @@ import styled, { keyframes, createGlobalStyle } from 'styled-components';
       border: 3px grey;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
     `;
-    
-    const Input = styled.input`
+
+const Input = styled.input`
       max-width: 100%;
       padding: 11px 13px;
       background: #f9f9fa;
@@ -48,8 +48,8 @@ import styled, { keyframes, createGlobalStyle } from 'styled-components';
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
       }
     `;
-    
-    const Button = styled.button`
+
+const Button = styled.button`
       max-width: 100%;
       padding: 11px 13px;
       color: black;
@@ -64,57 +64,88 @@ import styled, { keyframes, createGlobalStyle } from 'styled-components';
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease-out;
       :hover {
-        background: rgb(200, 50, 70);
+        background:	#FFFF66;;
         animation: ${jump} 0.2s ease-out forwards;
       }
     `;
-    
-    const Title = styled.h2`
+
+const Title = styled.h2`
       font-weight: normal;
       color: #2a2a29;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
       text-align: center;
     `;
-    
-    export default function Login() {
+const Select = styled.select`
+  width: 100%;
+  height: 35px;
+  background: white;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: none;
+  margin-left: 10px;
 
-      const [infos, setInfos] = useState({
-        email: "",
-        password: ""
-      });
-      const handleSubmit = e => {
-        e.preventDefault();
-        console.log(infos);
-      };
-    
-      const handleChange = e => {
-        e.preventDefault();
-        const { name, value } = e.target;
-        setInfos(Object.assign(infos, { [name]: value }));
-      };
-    
-      return (
-        <>
-          <Title>Shopping Site</Title>
-          <Wrapper>
-            <Form onSubmit={handleSubmit}>
-              <Input
-                type="email"
-                name="email"
-                value={infos.email}
-                onChange={handleChange}
-                placeholder="Email or mobile phone number"
-              />
-              <Input
-                type="password"
-                name="password"
-                value={infos.password}
-                onChange={handleChange}
-                placeholder="Please Enter Your Password"
-              />
-              <Button>Enter</Button>
-            </Form>
-          </Wrapper>
-        </>
-      );
-    }
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+`;
+
+export default function Login() {
+
+  const [infos, setInfos] = useState({
+    email: "",
+    password: "",
+    role:""
+  });
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(infos);
+  };
+
+  const handleEmailChange = e => {
+
+    setInfos({email: e.target.value,password: infos.password, role: infos.role});
+  };
+  const handlePWChange = e => {
+
+    setInfos({email: infos.email,password: e.target.value, role: infos.role});
+  };
+  const handleRoleChange = e => {
+    setInfos({email: infos.email,password: infos.password, role:e.target.value})
+  }
+
+  return (
+    <>
+      <Title>Shopping Site</Title>
+      <Wrapper>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="email"
+            name="email"
+            value={infos.email}
+            onChange={handleEmailChange}
+            placeholder="Email or mobile phone number"
+          />
+          <Input
+            type="password"
+            name="password"
+            value={infos.password}
+            onChange={handlePWChange}
+            placeholder="Please Enter Your Password"
+          />
+          <Select onChange={handleRoleChange}>
+            <option value="">Role</option>
+            <option value="costomer">Costomer</option>
+            <option value="seller">Seller</option>
+          </Select>
+          <Button>Enter</Button>
+        </Form>
+      </Wrapper>
+    </>
+  );
+}
