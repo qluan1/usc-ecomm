@@ -65,8 +65,12 @@ const MenuItem = styled.div`
 const Navbar = () => {
     const navigate = useNavigate();
 
-    const RouteChange = () => {
+    const RouteRegister = () => {
         navigate('/signUp');
+    }
+
+    const RouteLogin = () => {
+        navigate('/login');
     }
   return (
     <Container>
@@ -83,9 +87,9 @@ const Navbar = () => {
             </Center>
             <Right>
                 
-                <MenuItem onClick={RouteChange}> REGISTER</MenuItem>
+                <MenuItem onClick={RouteRegister}> REGISTER</MenuItem>
                 
-                <MenuItem>SIGN IN</MenuItem>
+                <MenuItem onClick={RouteLogin}>SIGN IN</MenuItem>
                 <MenuItem>
                     <Badge badgeContent = {0} color = "primary" overlap="rectangular">
                         <ShoppingCartOutlined />

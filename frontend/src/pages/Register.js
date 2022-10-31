@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
@@ -57,24 +57,53 @@ const Button = styled.button`
 const Register = () => {
 
     let navigate = useNavigate();
+    const [infos, setInfos] = useState({
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+        password: "",
+        confirm: ""
+    })
   
-  const routeChange = () =>{ 
-    // let path = '/'; 
+  const routeChange = () =>{  
     navigate("/UpdateHome");
   }
+
+  const handleFirstname = (e) => {
+    e.preventDefault();
+    setInfos({firstname: e.target.value});
+    console.log(e.target.value);
+  }
+
+  const register = (e) =>{
+    e.preventDefault()
+
+    // if (!info.firstname ||!info.lastname ||!info.username || !info.email || !info.password || !info.confirm) {
+    //     alert("Complete all the fields!!!")
+    //     return
+    // }
+
+    routeChange();
+}
   return (
     <Container>
         <Wrapper>
             <Title>Sign Up</Title>
-            <Form>
-                <Input placeholder = "first Name"/>
+            <Form onSubmit={register}>
+                <Input
+                    type = "text"
+                    value = {infos.firstname}
+                    onChange = {handleFirstname}
+                    placeholder = "first Name"
+                />
                 <Input placeholder = "last Name"/>
                 <Input placeholder = "username"/>
                 <Input placeholder = "email"/>
                 <Input placeholder = "password"/>
                 <Input placeholder = "confirm password"/>
                 <Agreement>By creating an account, you agree to Amazon's Conditions of Use and Privacy Notice.</Agreement>
-                <Button onClick={routeChange}>Sign Up</Button>
+                <Button type='submit'>Sign Up</Button>
             </Form>
         </Wrapper>
     </Container>
