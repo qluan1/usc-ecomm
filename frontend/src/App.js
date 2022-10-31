@@ -4,8 +4,15 @@ import { Home  }from './pages/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UpdateHome from './pages/UpdateHome';
 
+import Login from './pages/logIn';
+import {
+  BrowserRouter as Router,
+  Routes, Route
+} from "react-router-dom";
+import ForgetPassword from "../src/pages/forgetpassword";
 
 function App() {
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -13,7 +20,8 @@ function App() {
           <Route path='/' element = {<Home />} />
           <Route path='/signUp' element = {<Register />} />
           <Route path='/UpdateHome' element = {<UpdateHome />} />
-          {/* <Route path='/login' element = {<Login />} /> */}
+          <Route exact path="/Login" element={<Login/>} />
+          <Route exact path="/Login/forgetpassword" element={<ForgetPassword/>} />
         </Routes>
       </BrowserRouter>
     </div>
