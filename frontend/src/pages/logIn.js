@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 const jump = keyframes`
       from{
         transform: translateY(0)
@@ -95,6 +96,7 @@ const Select = styled.select`
 `;
 
 export default function Login() {
+  const navigate = useNavigate();
 
   const [infos, setInfos] = useState({
     email: "",
@@ -104,6 +106,9 @@ export default function Login() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(infos);
+    if(infos.role === "seller"){
+      navigate("/sellerHome")
+    }
   };
 
   const handleEmailChange = e => {
@@ -145,6 +150,7 @@ export default function Login() {
           <Button>Enter</Button>
           <br/>
           <Link to={"./forgetpassword"}>Forget password?</Link>
+          
         </Form>
       </Wrapper>
     </>

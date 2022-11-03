@@ -1,18 +1,16 @@
-import {useState} from 'react'
-export default function Uploadimg(){
-    const [selectedImage, setSelectedImage] = useState(null);
+export default function Uploadimg(props){
+  const productImg = props.productImg;
+  const setProductImg= props.setProductImg;
 
     return (
-      <div  style={{
-
-
-      }}>
-        <div style={{border: "1px black solid", width: "250px", height:"250px"}}>
-        {selectedImage && (
+      <div>
+        <div style={{border: "1px black solid", width: "50px", height:"50px"}}>
+        {productImg && (
           <div>
-          <img alt="not fount" width={"250px"} height={"250px"} src={URL.createObjectURL(selectedImage)} />
+          <img alt="not found" width={"50px"} height={"50px"} src={URL.createObjectURL(productImg)} />
           <br />
-          <button onClick={()=>setSelectedImage(null)}>Remove</button>
+          <br/>
+          <button onClick={()=>setProductImg(null)}>Remove</button>
           </div>
         )}
         </div>
@@ -23,7 +21,7 @@ export default function Uploadimg(){
           name="myImage"
           onChange={(event) => {
             console.log(event.target.files[0]);
-            setSelectedImage(event.target.files[0]);
+            setProductImg(event.target.files[0]);
           }}
         />
       </div>
