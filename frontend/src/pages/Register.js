@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
@@ -40,6 +40,20 @@ const Input = styled.input`
         padding: 10px;
 `;
 
+const Select = styled.select`
+//   width: 100%;
+//   height: 35px;
+//   background: white;
+//   color: gray;
+//   padding-left: 5px;
+//   font-size: 14px;
+//   border: none;
+//   margin-left: 10px;
+    margin: 20px 5px;
+    border: none;
+  
+`;
+
 const Agreement = styled.span`
         font-size: 14px;
         margin: 20px 0px;
@@ -63,51 +77,154 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
-        confirm: ""
+        confirm: "",
+        role: ""
     })
-  
-  const routeChange = () =>{  
-    navigate("/UpdateHome");
-  }
 
-  const handleFirstname = (e) => {
-    e.preventDefault();
-    setInfos({firstname: e.target.value});
-    console.log(e.target.value);
-  }
+    const routeChange = () => {
+        navigate("/UpdateHome");
+    }
 
-  const register = (e) =>{
-    e.preventDefault()
+    const handleFirstNameChange = (e) => {
+        setInfos({
+            firstname: e.target.value,
+            lastname: infos.lastname,
+            username: infos.username,
+            email: infos.email,
+            password: infos.password,
+            confirm: infos.confirm,
+            role: infos.role
+        });
+    }
 
-    // if (!info.firstname ||!info.lastname ||!info.username || !info.email || !info.password || !info.confirm) {
-    //     alert("Complete all the fields!!!")
-    //     return
-    // }
+    const handleLastNameChange = (e) => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: e.target.value,
+            username: infos.username,
+            email: infos.email,
+            password: infos.password,
+            confirm: infos.confirm,
+            role: infos.role
+        });
+    }
 
-    routeChange();
-}
-  return (
-    <Container>
-        <Wrapper>
-            <Title>Sign Up</Title>
-            <Form onSubmit={register}>
-                <Input
-                    type = "text"
-                    value = {infos.firstname}
-                    onChange = {handleFirstname}
-                    placeholder = "first Name"
-                />
-                <Input placeholder = "last Name"/>
-                <Input placeholder = "username"/>
-                <Input placeholder = "email"/>
-                <Input placeholder = "password"/>
-                <Input placeholder = "confirm password"/>
-                <Agreement>By creating an account, you agree to Amazon's Conditions of Use and Privacy Notice.</Agreement>
-                <Button type='submit'>Sign Up</Button>
-            </Form>
-        </Wrapper>
-    </Container>
-  )
+    const handleUsernameChange = (e) => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: infos.lastname,
+            username: e.target.value,
+            email: infos.email,
+            password: infos.password,
+            confirm: infos.confirm,
+            role: infos.role
+        });
+    }
+
+    const handleEmailChange = e => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: infos.lastname,
+            username: infos.username,
+            email: e.target.value,
+            password: infos.password,
+            confirm: infos.confirm,
+            role: infos.role
+        });
+    };
+
+    const handlePWChange = e => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: infos.lastname,
+            username: infos.username,
+            email: infos.email,
+            password: e.target.value,
+            confirm: infos.confirm,
+            role: infos.role
+        });
+    };
+
+    const handleConfirmChange = (e) => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: infos.lastname,
+            username: infos.username,
+            email: infos.email,
+            password: infos.password,
+            confirm: e.target.value,
+            role: infos.role
+        });
+    }
+
+    const handleRoleChange = e => {
+        setInfos({
+            firstname: infos.firstname,
+            lastname: infos.lastname,
+            username: infos.username,
+            email: infos.email,
+            password: infos.password,
+            confirm: infos.confirm,
+            role: e.target.value
+        });
+    }
+
+    const register = (e) => {
+        e.preventDefault()
+        routeChange();
+    }
+    return (
+        <Container>
+            <Wrapper>
+                <Title>Sign Up</Title>
+                <Form onSubmit={register}>
+                    <Input
+                        type="text"
+                        value={infos.firstname}
+                        onChange={handleFirstNameChange}
+                        placeholder="First Name"
+                    />
+                    <Input
+                        type="text"
+                        value={infos.lastname}
+                        onChange={handleLastNameChange}
+                        placeholder="Last Name"
+                    />
+                    <Input
+                        type="text"
+                        value={infos.username}
+                        onChange={handleUsernameChange}
+                        placeholder="Username"
+                    />
+                    <Input
+                        type="email"
+                        value={infos.email}
+                        onChange={handleEmailChange}
+                        placeholder="Email"
+                    />
+                    <Input
+                        type="password"
+                        value={infos.password}
+                        onChange={handlePWChange}
+                        placeholder="Password"
+                    />
+                    <Input
+                        type="password"
+                        value={infos.password}
+                        onChange={handleConfirmChange}
+                        placeholder="Confirm Password"
+                    />
+                    <Select onChange={handleRoleChange}>
+                        <option value="">Role</option>
+                        <option value="costomer">Costomer</option>
+                        <option value="seller">Seller</option>
+                    </Select>
+                    <Agreement>By creating an account, you agree to Amazon's Conditions of Use and Privacy Notice.</Agreement>
+                    <Button type='submit'>Sign Up</Button>
+                </Form>
+            </Wrapper>
+        </Container>
+    )
 }
 
 export default Register
