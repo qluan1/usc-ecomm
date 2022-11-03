@@ -1,33 +1,3 @@
-// import React from 'react'
-// import styled from 'styled-components'
-
-// const Container = styled.div`
-//     background-color: #232F3E;
-//     width: 100%;
-//     min-height: 200px;
-//     color: whitesmoke;
-// `;
-
-// const Wrapper = styled.div`
-//     background-color: #354558;
-//     min-height: 60px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-
-// `;
-// const Footer = () => {
-//   return (
-//     <Container>
-//         <Wrapper>
-//             Back to Top
-//         </Wrapper>
-//     </Container>
-//   )
-// }
-
-// export default Footer;
-
 import {
     Facebook,
     Instagram,
