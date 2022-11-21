@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Search, ShoppingCartOutlined } from '@material-ui/icons'
 import {Badge} from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const Container = styled.div`
     height: 80px;
@@ -64,6 +65,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const { auth, logoutAuth } = useAuth();
 
     const RouteRegister = () => {
         navigate('/signUp');
@@ -86,10 +88,18 @@ const Navbar = () => {
                 <Logo>Amazon</Logo>
             </Center>
             <Right>
-                
-                <MenuItem onClick={RouteRegister}> REGISTER</MenuItem>
-                
-                <MenuItem onClick={RouteLogin}>SIGN IN</MenuItem>
+                {(
+                    auth
+                    ?<>
+                        <MenuItem onClick={() => navigate('/profile')}>{`Hello, ${auth.getUsername()}`}</MenuItem>
+                        <MenuItem onClick={ logoutAuth }>Log Out</MenuItem>
+                    </>
+                    :<>
+                        <MenuItem onClick={RouteRegister}> REGISTER</MenuItem>
+                        <MenuItem onClick={RouteLogin}>SIGN IN</MenuItem>
+                    </>
+                )}
+
                 <MenuItem>
                     <Badge badgeContent = {0} color = "primary" overlap="rectangular">
                         <ShoppingCartOutlined />
